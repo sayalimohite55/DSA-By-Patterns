@@ -1,7 +1,16 @@
 package com.patterns.twoPointers;
 
 import com.patterns.common.SLLNode;
-
+/*
+* Statement
+* Given the head of a singly linked list and an integer n,
+* remove the nth node from the end of the list and return the head of the modified list.
+*
+* Constraints: The number of nodes in the list is k
+* 1 ≤ k ≤ 10^3
+* −10^3 ≤ Node.value ≤ 10^3
+* 1 ≤ n ≤ k
+* */
 public class RemoveNthNodeFromEnd {
     static SLLNode removeNthNodeFromEnd_Approach_I(SLLNode head, int n) {
         int totalNodes = 0;
@@ -67,5 +76,10 @@ public class RemoveNthNodeFromEnd {
 
         head = removeNthNodeFromEnd_Approach_II(head, 9);
         SLLNode.printSLL(head);
+
+        /*
+        * Time Complexity = o(n)
+        * Space Complexity = o(1)
+        * */
     }
 }
