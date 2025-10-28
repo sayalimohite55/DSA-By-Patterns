@@ -37,17 +37,64 @@ public class SortColors {
     static void sortColors_approachII(int[] colors) {
         //Intent - using merge sort
         printArray(colors);
-        int lb = 0, ub = colors.length-1, mid;
-        while(lb < ub) {
-            mid = (lb + ub)/2;
-            //if(colors[lb] > colors[mid])
-        }
-
+        mergeSort(colors, 0, colors.length-1);
         printArray(colors);
         /*
          * Time Complexity = o(n log n)
          * Space Complexity = o(n)
          * */
+    }
+
+    static void mergeSort(int[] colors, int left, int right) {
+        if(left < right) {
+            int mid = left + (right - left)/2;
+            mergeSort(colors, left, mid);
+            mergeSort(colors, mid+1, right);
+
+            merge(colors, left, mid, right);
+        }
+    }
+
+    static void merge(int[] arr, int left, int mid, int right) {
+        int n1 = mid - left + 1;
+        int n2 = right - mid;
+
+        int[] L = new int[n1];
+        int[] R = new int[n2];
+
+        // Copy data to temp arrays
+        for (int i = 0; i < n1; i++)
+            L[i] = arr[left + i];
+        for (int j = 0; j < n2; j++)
+            R[j] = arr[mid + 1 + j];
+
+        int i = 0, j = 0;
+        int k = left;
+
+        // Merge temp arrays back into arr[l..r]
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                arr[k] = L[i];
+                i++;
+            } else {
+                arr[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Copy remaining elements
+        while (i < n1) {
+            arr[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            arr[k] = R[j];
+            j++;
+            k++;
+        }
     }
 
     static void sortColors_approachIII(int[] colors) {
@@ -98,6 +145,10 @@ public class SortColors {
         * which could give runtime of o(n)
         */
         System.out.println("\nApproach I : Brute Force Solution");
+        sortColors_approachI(new int[]{1,0,2,1,2,2});
+        sortColors_approachI(new int[]{1,0,2,1,0,2});
+
+        System.out.println("\nApproach II : Brute Force Solution");
         sortColors_approachI(new int[]{1,0,2,1,2,2});
         sortColors_approachI(new int[]{1,0,2,1,0,2});
 
