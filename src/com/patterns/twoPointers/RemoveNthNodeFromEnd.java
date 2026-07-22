@@ -1,6 +1,6 @@
 package com.patterns.twoPointers;
 
-import com.patterns.common.SLLNode;
+import com.patterns.common.SLL;
 /*
 * Statement
 * Given the head of a singly linked list and an integer n,
@@ -12,9 +12,9 @@ import com.patterns.common.SLLNode;
 * 1 ≤ n ≤ k
 * */
 public class RemoveNthNodeFromEnd {
-    static SLLNode removeNthNodeFromEnd_Approach_I(SLLNode head, int n) {
+    static SLL.Node removeNthNodeFromEnd_Approach_I(SLL.Node head, int n) {
         int totalNodes = 0;
-        SLLNode node = head, prev = head;
+        SLL.Node node = head, prev = head;
         while(node != null) {
             totalNodes++;
             node = node.next;
@@ -34,8 +34,8 @@ public class RemoveNthNodeFromEnd {
         return head;
     }
 
-    static SLLNode removeNthNodeFromEnd_Approach_II(SLLNode head, int n) {
-        SLLNode p1, p2;
+    static SLL.Node removeNthNodeFromEnd_Approach_II(SLL.Node head, int n) {
+        SLL.Node p1, p2;
         p1 = p2 = head;
 
         // Below loop will place p2 n nodes away from p1
@@ -57,25 +57,25 @@ public class RemoveNthNodeFromEnd {
 
     public static void main(String[] args) {
         //Approach I - using 2 passes
-        SLLNode head = SLLNode.createSLL(new int[]{1,2,3,4,5,6,7,8,9,10});
-        SLLNode.printSLL(head);
+        SLL.Node head = SLL.createSLL(new int[]{1,2,3,4,5,6,7,8,9,10});
+        SLL.printSLL(head);
 
         head = removeNthNodeFromEnd_Approach_I(head, 3);
-        SLLNode.printSLL(head);
+        SLL.printSLL(head);
 
         head = removeNthNodeFromEnd_Approach_I(head, 9);
-        SLLNode.printSLL(head);
+        SLL.printSLL(head);
 
         //Approach II - using single pass
         System.out.println();
-        head = SLLNode.createSLL(new int[]{1,2,3,4,5,6,7,8,9,10});
-        SLLNode.printSLL(head);
+        head = SLL.createSLL(new int[]{1,2,3,4,5,6,7,8,9,10});
+        SLL.printSLL(head);
 
         head = removeNthNodeFromEnd_Approach_II(head, 3);
-        SLLNode.printSLL(head);
+        SLL.printSLL(head);
 
         head = removeNthNodeFromEnd_Approach_II(head, 9);
-        SLLNode.printSLL(head);
+        SLL.printSLL(head);
 
         /*
         * Time Complexity = o(n)

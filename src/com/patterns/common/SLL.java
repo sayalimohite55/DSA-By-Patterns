@@ -1,19 +1,21 @@
 package com.patterns.common;
 
-public class SLLNode {
-    public int data;
-    public SLLNode next;
+public class SLL {
+    public static class Node {
+        public int data;
+        public Node next;
 
-    public SLLNode(int val) {
-        this.data = val;
-        this.next = null;
+        public Node(int val) {
+            this.data = val;
+            this.next = null;
+        }
     }
 
-    public static SLLNode createSLL(int[] input) {
-        SLLNode head = null, newNode, current = null;
+    public static Node createSLL(int[] input) {
+        Node head = null, newNode, current = null;
 
         for(int val : input) {
-            newNode = new SLLNode(val);
+            newNode = new Node(val);
             if(head == null) {
                 head = current = newNode;
             } else {
@@ -24,7 +26,7 @@ public class SLLNode {
         return head;
     }
 
-    public static void printSLL(SLLNode node) {
+    public static void printSLL(Node node) {
         System.out.println("\nSingly Linked List : ");
         while(node != null) {
             System.out.print("->" + node.data);
